@@ -20,7 +20,7 @@ type header struct {
 	luacNum float64
 }
 
-const {
+const (
 	LUA_SIGNATURE = "\x1bLua"
 	LUAC_VERSION = 0x54
 	LUAC_FORMAT = 0
@@ -29,10 +29,10 @@ const {
 	CSIZET_SIZE = 8
 	INSTRUCTION_SIZE = 8
 	LUA_INTEGER_SIZE = 8
-	LUNAR_NUMBER_SIZE = 8
+	LUA_NUMBER_SIZE = 8
 	LUAC_INT = 0x5678
 	LUAC_NUM = 370.5
-}
+)
 
 type Prototype struct {
 	Source string
@@ -50,14 +50,14 @@ type Prototype struct {
 	UpvalueNames []string
 }
 
-const {
+const (
 	TAG_NIL = 0x00
 	TAG_BOOLEAN = 0x01
 	TAG_NUMBER = 0x03
 	TAG_INTEGER = 0x13
 	TAG_SHORT_STR = 0X04
 	TAG_LONG_STR = 0X14
-}
+)
 
 type Upvalue struct {
 	Instack byte
@@ -70,7 +70,7 @@ type LocVar struct {
 	EndPC uint32
 }
 
-func Undump(data []byte)  {
+func Undump(data []byte) *Prototype{
 	reader := &reader{data}
 	reader.checkHeader()
 	reader.readByte()
