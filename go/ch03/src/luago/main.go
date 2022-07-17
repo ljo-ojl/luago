@@ -4,6 +4,7 @@ import "fmt"
 import "io/ioutil"
 import "os"
 import "luago/binchunk"
+import . "luago/vm"
 
 func main()  {
 	if len(os.Args) > 1 {
@@ -42,6 +43,8 @@ func printCode(f *binchunk.Prototype) {
 		if len(f.LineInfo) > 0 {
 			line = fmt.Sprintf("%d", f.LineInfo[pc])
 		}
+		i := Instruction(c)
+		
 		fmt.Printf("\t%d\t[%s]\t0x%08X\n", pc+1, line, c)
 	}
 }
