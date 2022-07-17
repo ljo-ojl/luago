@@ -44,8 +44,9 @@ func printCode(f *binchunk.Prototype) {
 			line = fmt.Sprintf("%d", f.LineInfo[pc])
 		}
 		i := Instruction(c)
-		
 		fmt.Printf("\t%d\t[%s]\t0x%08X\n", pc+1, line, c)
+		printOperand(i)
+		fmt.Printf("\n")
 	}
 }
 
