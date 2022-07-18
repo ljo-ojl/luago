@@ -50,6 +50,28 @@ func printCode(f *binchunk.Prototype) {
 	}
 }
 
+func printOperand(i Instruction) {
+	switch i.OpMode() {
+	case IABC:
+		a, b, c := i.ABC()
+		fmt.Printf(%d, a)
+		if i.BMode() != OpArgN {
+			if b > 0xFF {
+				fmt.Printf("  %d", -1-b&0xFF)
+			} else {
+				fmt.Printf("  %d", b)
+			}
+		}
+		if i.CMode != OpArgN {
+			if b > 0xFF {
+				fmt.Printf("  %d", -1-b&0xFF)
+			} else {
+				fmt.Printf("  %d", b)
+			}
+		}
+	}
+}
+
 func printDetail(f* binchunk.Prototype) {
 	fmt.Printf("constants (%d): \n", len(f.Constants))
 }
