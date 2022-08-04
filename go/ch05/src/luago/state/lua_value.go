@@ -1,6 +1,7 @@
 package state
 
 import . "luago/api"
+import "luago/number"
 
 type luaValue interface{}
 
@@ -15,7 +16,7 @@ func typeOf(val luaValue) LuaType {
 	}
 }
 
-func convertToFloat(val luaState) (float64, bool) {
+func convertToFloat(val luaValue) (float64, bool) {
 	switch x := val.(type) {
 	case float64: 	return x, true
 	case int64: 	return float64(x), true
@@ -40,6 +41,6 @@ func _stringToInteger(s string)	(int64, bool) {
 	if f, ok := number.ParseFloat(s); ok {
 		return number.FloatToInteger(f)
 	}
-	return 0. false
+	return 0, false
 }
 
